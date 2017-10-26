@@ -1,0 +1,143 @@
+{
+	"questions": [
+		{
+			"id": "alder",
+			"text": "Hvor gammel er du?",
+			"answers": [
+				{
+					"id": "ungdom",
+					"text": "Under 20"
+				},
+				{
+					"id": "ung_voksen",
+					"text": "20-30"
+				},
+				{
+					"id": "voksen",
+					"text": "30-40"
+				},
+				{
+					"id": "eldre",
+					"text": "Eldre"
+				}
+			]
+		},
+		{
+			"id": "kjonn",
+			"text": "Kjønn?",
+			"answers": [
+				{
+					"id": "M",
+					"text": "Mann"
+				},
+				{
+					"id": "K",
+					"text": "Kvinne"
+				}
+			]
+		},
+		{
+			"id": "hobby",
+			"text": "Hvilke hobbyer har du?",
+			"multiple": true,
+			"answers": [
+				{
+					"id": "data",
+					"text": "Datamaskiner"
+				},
+				{
+					"id": "mennesker",
+					"text": "Folketitting"
+				},
+				{
+					"id": "fugl",
+					"text": "Fugletitting"
+				},
+				{
+					"id": "lesing",
+					"text": "Lese bøker"
+				}
+			]
+		},
+		{
+			"id": "fylke",
+			"text": "I hvilket fylke bor du?",
+			"input": true
+		},
+		{
+			"id": "kommune",
+			"text": "I hvilken kommune bor du?",
+			"input": true
+		},
+		{
+			"id": "arbeidsledig",
+			"text": "Er du arbeidsledig?",
+			"answers": [
+				{
+					"id": "J",
+					"text": "Ja"
+				},
+				{
+					"id": "N",
+					"text": "Nei"
+				}
+			]
+		},
+		{
+			"id": "arbeidsledig-lengde",
+			"text": "Hvor lenge har du vært arbeidsledig?",
+			"answers": [
+				{
+					"id": "akkurat",
+					"text": "Akkurat blitt arbeidsledig"
+				},
+				{
+					"id": "stund",
+					"text": "Vært det en stund"
+				},
+				{
+					"id": "permanent",
+					"text": "Permanent"
+				}
+			]
+		},
+		{
+			"id": "lyst",
+			"text": "Har du lyst på jobb?",
+			"answers": [
+				{
+					"id": "J",
+					"text": "Ja"
+				},
+				{
+					"id": "N",
+					"text": "Nei"
+				}
+			]
+		}
+	],
+	"fsm": {
+		"initial": "alder",
+		"states": [
+			"alder",
+			"kjonn",
+			"hobby",
+			"fylke",
+			"kommune",
+			"arbeidsledig",
+			"arbeidsledig-lengde",
+			"lyst"
+		],
+		"edges": {
+			"alder": "kjonn",
+			"kjonn": "hobby",
+			"hobby": "fylke",
+			"fylke": "kommune",
+			"kommune": "arbeidsledig",
+			"arbeidsledig": {
+				"J": "arbeidsledig-lengde"
+			},
+			"arbeidsledig-lengde": "lyst"
+		}
+	}
+}
